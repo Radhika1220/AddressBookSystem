@@ -1,12 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace AddressBookSystem
 {
-    class Program
+    /// <summary>
+    /// UC1-Address Book System
+    /// </summary>
+
+    class Addr
     {
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome To Address Book System!");
+            Sample.AddrBook.GetCustomer();
+            Sample.AddrBook.ListingPeople();
+
+
         }
     }
 }
