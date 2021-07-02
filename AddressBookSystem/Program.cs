@@ -18,7 +18,7 @@ namespace AddressBookSystem
             Sample.AddrBook.GetCustomer();
             Sample.AddrBook.Modify();
             Sample.AddrBook.ListingPeople();
-
+           // Sample.AddrBook.RemovePeople();
 
         }
     }
