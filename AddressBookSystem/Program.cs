@@ -16,6 +16,7 @@ namespace AddressBookSystem
         static void Main(string[] args)
         {
             Sample.AddrBook.GetCustomer();
+            Sample.AddrBook.Modify();
             Sample.AddrBook.ListingPeople();
 
 
