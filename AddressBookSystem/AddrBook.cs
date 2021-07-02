@@ -61,11 +61,11 @@ namespace Sample
             Console.WriteLine("Last Name: " + person.LastName);
             Console.WriteLine("Phone Number: " + person.PhoneNumber);
             Console.WriteLine("Address : " + person.Addresses);
-            Console.WriteLine("Address : " + person.City);
-            Console.WriteLine("Address : " + person.State);
-            Console.WriteLine("Address : " + person.ZipCode);
+            Console.WriteLine("City : " + person.City);
+            Console.WriteLine("State : " + person.State);
+            Console.WriteLine("ZipCode : " + person.ZipCode);
             Console.WriteLine("Phone Number: " + person.PhoneNum);
-            Console.WriteLine("Phone Number: " + person.EmailId);
+            Console.WriteLine("EmailId: " + person.EmailId);
             Console.WriteLine("-------------------------------------------");
         }
         public static void ListingPeople()
