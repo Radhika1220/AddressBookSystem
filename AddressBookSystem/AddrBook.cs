@@ -56,13 +56,12 @@ namespace Sample
         {
             Console.WriteLine("First Name: " + person.FirstName);
             Console.WriteLine("Last Name: " + person.LastName);
-            Console.WriteLine("Phone Number: " + person.PhoneNumber);
             Console.WriteLine("Address : " + person.Addresses);
-            Console.WriteLine("Address : " + person.City);
-            Console.WriteLine("Address : " + person.State);
-            Console.WriteLine("Address : " + person.ZipCode);
+            Console.WriteLine("City : " + person.City);
+            Console.WriteLine("State : " + person.State);
+            Console.WriteLine("ZipCode : " + person.ZipCode);
             Console.WriteLine("Phone Number: " + person.PhoneNum);
-            Console.WriteLine("Phone Number: " + person.EmailId);
+            Console.WriteLine("Email Id: " + person.EmailId);
             Console.WriteLine("-------------------------------------------");
         }
         public static void Modify()
@@ -131,8 +130,24 @@ namespace Sample
                     }
 
                 }
+            }
+        }
 
-
+        public static void RemovePeople()
+        {
+            Console.WriteLine("Enter the first name of the person you would like to remove.");
+            string Remove = Console.ReadLine();
+            foreach(var person in People.ToList())
+            {
+                if(person.FirstName.ToUpper()==Remove.ToUpper())
+                {
+                    People.Remove(person);
+                    Console.WriteLine("Contact is deleted");
+                }
+                else
+                {
+                    Console.WriteLine("Contact is not present");
+                }
             }
         }
 
@@ -142,14 +157,13 @@ namespace Sample
             {
                 Console.WriteLine("Your address book is empty.");
                 Console.ReadKey();
-                return;
+              return;
             }
             Console.WriteLine("Here are the current people in your address book:\n");
             foreach (var person in People)
             {
                 PrintCustomer(person);
             }
-            Console.WriteLine("\nPress any key to continue.");
             Console.ReadKey();
         }
     
