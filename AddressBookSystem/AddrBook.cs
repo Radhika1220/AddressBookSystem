@@ -8,7 +8,7 @@ namespace Sample
 {
     class AddrBook
     {
-       
+
         public static List<Person> People = new List<Person>();
         public class Person
         {
@@ -67,7 +67,7 @@ namespace Sample
         }
         public static void Modify()
         {
-            if (People.Count !=0)
+            if (People.Count != 0)
             {
                 Console.WriteLine("Enter the contact to modify:");
                 string Modified = Console.ReadLine();
@@ -117,9 +117,8 @@ namespace Sample
                                     Console.WriteLine("Enter the New Pin Code: ");
                                     person.ZipCode = Console.ReadLine();
                                     break;
-                                default:
-                                    Console.WriteLine("Enter a Valid option to modify");
-                                    break;
+                                case 8:
+                                    return;
 
                             }
 
@@ -135,9 +134,9 @@ namespace Sample
 
 
             }
-        }   
+        }
 
-            public static void ListingPeople()
+        public static void ListingPeople()
         {
             if (People.Count == 0)
             {
@@ -153,8 +152,7 @@ namespace Sample
             Console.WriteLine("\nPress any key to continue.");
             Console.ReadKey();
         }
-
+    
     }
 }
-    
 

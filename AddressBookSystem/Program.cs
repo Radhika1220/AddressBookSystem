@@ -23,7 +23,11 @@ namespace AddressBookSystem
             Sample.AddrBook.GetCustomer();
             Sample.AddrBook.Modify();
             Sample.AddrBook.ListingPeople();
+<<<<<<< HEAD
 
+>>>>>>> UC3-EditingDetails
+=======
+           // Sample.AddrBook.RemovePeople();
 >>>>>>> UC3-EditingDetails
 
         }
