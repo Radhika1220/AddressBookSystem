@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace Sample
 {
+    /// <summary>
+    /// Address book
+    /// </summary>
     class AddrBook
     {
-
+        //Creating a static list 
         public static List<Person> People = new List<Person>();
+        //Getter and setter methods
         public class Person
         {
             public string FirstName { get; set; }
@@ -22,6 +26,7 @@ namespace Sample
             public string PhoneNum { get; set; }
             public string EmailId { get; set; }
         }
+        //Getting details from user
         public static void GetCustomer()
         {
             Person person = new Person();
@@ -52,6 +57,7 @@ namespace Sample
 
             People.Add(person);
         }
+        //Printing the details
         public static void PrintCustomer(Person person)
         {
             Console.WriteLine("First Name: " + person.FirstName);
@@ -64,6 +70,7 @@ namespace Sample
             Console.WriteLine("Email Id: " + person.EmailId);
             Console.WriteLine("-------------------------------------------");
         }
+        //Modify the details
         public static void Modify()
         {
             if (People.Count != 0)
@@ -132,7 +139,7 @@ namespace Sample
                 }
             }
         }
-
+        //Removing the detail
         public static void RemovePeople()
         {
             Console.WriteLine("Enter the first name of the person you would like to remove.");
