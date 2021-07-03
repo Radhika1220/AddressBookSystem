@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace Sample
 {
+    /// <summary>
+    /// Address Book System
+    /// </summary>
     class AddrBook
     {
-
-        public static List<Person> People = new List<Person>();
+        //Creating a list to add the details
+        public static List<Person> people = new List<Person>();
         public class Person
         {
             public string FirstName { get; set; }
@@ -22,36 +25,41 @@ namespace Sample
             public string PhoneNum { get; set; }
             public string EmailId { get; set; }
         }
+        //Getting the user details
         public static void GetCustomer()
         {
-            Person person = new Person();
+            for (int i = 0; i < 2; i++)
+            {
+                Person person = new Person();
 
-            Console.Write("Enter First Name: ");
-            person.FirstName = Console.ReadLine();
+                Console.Write("Enter First Name: ");
+                person.FirstName = Console.ReadLine();
 
-            Console.Write("Enter Last Name: ");
-            person.LastName = Console.ReadLine();
+                Console.Write("Enter Last Name: ");
+                person.LastName = Console.ReadLine();
 
-            Console.Write("Enter Address : ");
-            person.Addresses = Console.ReadLine();
+                Console.Write("Enter Address : ");
+                person.Addresses = Console.ReadLine();
 
-            Console.Write("Enter City : ");
-            person.City = Console.ReadLine();
+                Console.Write("Enter City : ");
+                person.City = Console.ReadLine();
 
-            Console.Write("Enter State : ");
-            person.State = Console.ReadLine();
+                Console.Write("Enter State : ");
+                person.State = Console.ReadLine();
 
-            Console.Write("Enter ZipCode: ");
-            person.ZipCode = Console.ReadLine();
+                Console.Write("Enter ZipCode: ");
+                person.ZipCode = Console.ReadLine();
 
-            Console.Write("Enter Phone Number: ");
-            person.PhoneNum = Console.ReadLine();
+                Console.Write("Enter Phone Number: ");
+                person.PhoneNum = Console.ReadLine();
 
-            Console.Write("Enter EmailId: ");
-            person.EmailId = Console.ReadLine();
+                Console.Write("Enter EmailId: ");
+                person.EmailId = Console.ReadLine();
 
-            People.Add(person);
+                people.Add(person);
+            }
         }
+        //Print the details
         public static void PrintCustomer(Person person)
         {
             Console.WriteLine("First Name: " + person.FirstName);
@@ -65,13 +73,14 @@ namespace Sample
             Console.WriteLine("Email Id: " + person.EmailId);
             Console.WriteLine("-------------------------------------------");
         }
+        //Modify the details
         public static void Modify()
         {
-            if (People.Count != 0)
+            if (people.Count != 0)
             {
                 Console.WriteLine("Enter the contact to modify:");
                 string Modified = Console.ReadLine();
-                foreach (var person in People)
+                foreach (var person in people)
                 {
                     if (person.FirstName.ToUpper() == Modified.ToUpper())
                     {
@@ -135,24 +144,41 @@ namespace Sample
 
             }
         }
-
+        //Listing the user entered details or modified details
         public static void ListingPeople()
         {
-            if (People.Count == 0)
+            if (people.Count == 0)
             {
                 Console.WriteLine("Your address book is empty.");
                 Console.ReadKey();
                 return;
             }
             Console.WriteLine("Here are the current people in your address book:\n");
-            foreach (var person in People)
+            foreach (var person in people)
             {
                 PrintCustomer(person);
             }
             Console.WriteLine("\nPress any key to continue.");
             Console.ReadKey();
         }
-    
+        //Remving the field uid==ding remove method present in list collection
+        public static void RemovePeople()
+        {
+            Console.WriteLine("Enter the first name of the person you would like to remove.");
+            string Remove = Console.ReadLine();
+            foreach (var person in people.ToList())
+            {
+                if (person.FirstName.ToUpper() == Remove.ToUpper())
+                {
+                    people.Remove(person);
+                    Console.WriteLine("Contact is deleted");
+                }
+                else
+                {
+                    Console.WriteLine("Contact is not present");
+                }
+            }
+        }
     }
 }
 
