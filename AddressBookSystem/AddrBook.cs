@@ -198,8 +198,23 @@ namespace AddressBookSystem
           
             }
         }
-
-       
+        public void Search(List<AddrBook> people,string cityname,string statename)
+        {
+           
+            AddrBook addrBook = new AddrBook();
+            var result = people.FindAll(a =>a.city.Equals(cityname) || a.state.Equals(statename));
+            if (result.Count != 0)
+            {
+               foreach(var m in result)
+                {
+                    PrintCustomer(m);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No person details available");
+            }
+        }
     }
 }
 
