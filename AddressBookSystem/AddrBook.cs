@@ -64,7 +64,9 @@ namespace AddressBookSystem
                 }
                 else
                 {
-                    Console.WriteLine("record is already exists");
+                    Console.WriteLine("-------Record is already exists-------");
+                    Console.WriteLine("Modify the details which has duplicate name");
+                    Modify();
                 }
             }
         }
