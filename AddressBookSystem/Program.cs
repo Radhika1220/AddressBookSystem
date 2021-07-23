@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AddressBookSystem
 {
     class Program
 
     {
-     
-        public static Dictionary<string, List<AddrBook>> addressBook = new Dictionary<string, List<AddrBook>>();
 
+        public static Dictionary<string, List<AddrBook>> addressBook = new Dictionary<string, List<AddrBook>>();
+        public static Dictionary<string, List<AddrBook>> City = new Dictionary<string, List<AddrBook>>();
+        public static Dictionary<string, List<AddrBook>> State = new Dictionary<string, List<AddrBook>>();
         static void Main(string[] args)
         {
 
@@ -53,63 +55,77 @@ namespace AddressBookSystem
                     string EmailId = Console.ReadLine();
                     addrBook.GetCustomer(FirstName, LastName, PhoneNumber, Addresses, City, State, ZipCode, EmailId);
                     noOfContact--;
+                   addressBook.Add(addressbookname, addrBook.people);
                     Console.WriteLine(" ");
                     addrBook.ListingPeople();
                 }
                 Console.WriteLine("1.To modify the details");
                 Console.WriteLine("2.To remove the details");
-                Console.WriteLine("3.Exit!");
-                switch (Console.ReadLine())
+                Console.WriteLine("3.city or state");
+                int option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
                 {
-                    case "1":
+                    case 1:
                         addrBook.Modify();
                         Console.WriteLine(" ");
                         addrBook.ListingPeople();
                         break;
-                    case "2":
+                    case 2:
                         addrBook.RemovePeople();
                         Console.WriteLine(" ");
                         addrBook.ListingPeople();
                         break;
-                    default:
-                        Console.WriteLine("Enter valid option!");
+                    case 3:
+                        Console.WriteLine("Enter 1-to Search a person through a City");
+                        Console.WriteLine("Enter 2-to Search a person through a State");
+                       int opt = Convert.ToInt32(Console.ReadLine());
+                        switch (opt)
+                        {
+                          
+                            case 1:
+                                SearchAddress(opt);
+                                break;
+                            case 2:
+                               SearchAddress(opt);
                         break;
-
-                }
-                if (addressBook.ContainsKey(addressbookname))
-                {
-                    Console.WriteLine("Existing address book name");
-                    return;
-                }
-                else
-                {
-                    addressBook.Add(addressbookname, addrBook.people);
-                }
-
-
+                            default:
+                                Console.WriteLine("Invalid Option!");
+                                break;
+                        }
+                        break;              
+            }
                 noOfBooks++;
-            } 
-            Console.WriteLine("Enter City name which you want to person details");
-            string cityname = Console.ReadLine();
-            Console.WriteLine("Enter state name which you want to person details");
-            string statename= Console.ReadLine();
-           
-            foreach (KeyValuePair<string, List<AddrBook>> contact in addressBook)
-            {
-                Console.WriteLine("The Contact List from {0} or {1}", cityname, statename);
-                AddrBook addr = new AddrBook();
-                addr.Search(contact.Value, cityname, statename);
             }
-            foreach (KeyValuePair<string, List<AddrBook>> addr in addressBook)
+        static void SearchAddress(int option)
+        {
+            string city, state;
+            if (option == 1)
             {
-                Console.WriteLine("The address Books are:{0}", addr.Key);
+                Console.WriteLine("Enter the City Name");
+                city = Console.ReadLine();
+                foreach (KeyValuePair<string, List<AddrBook>> kvp in addressBook)
+                {
+                    AddrBook.StoreCityList(kvp.Key, kvp.Value, city);
 
+                }
+                if (option == 2)
+                {
+                    Console.WriteLine("Enter the City Name");
+                    state = Console.ReadLine();
+                    foreach (KeyValuePair<string, List<AddrBook>> kvp in addressBook)
+                    {
+                        AddrBook.StoreStateList(kvp.Key, kvp.Value, state);
+                    }
+                }
             }
-
         }
     }
 }
+}
 
+
+
+      
 
 
 

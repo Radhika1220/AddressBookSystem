@@ -9,18 +9,20 @@ namespace AddressBookSystem
     /// <summary>
     /// Address Book System
     /// </summary>
-    ///     
-
+    
+   
     public interface IAddressBookSystem
     {
-        //void GetCustomer();
-     
         void ListingPeople();
         void RemovePeople();
     }
  public   class AddrBook:IAddressBookSystem
     {
-        public List<AddrBook> people;
+        public static Dictionary<string, List<AddrBook>> City = new Dictionary<string, List<AddrBook>>();
+        public static Dictionary<string, List<AddrBook>> State = new Dictionary<string, List<AddrBook>>();
+        public List<AddrBook> stateList;
+        public List<AddrBook> cityList;
+        public  List<AddrBook> people;
         public AddrBook()
         {
             people = new List<AddrBook>();
@@ -46,10 +48,10 @@ namespace AddressBookSystem
 
         }
         //Getting the user details
-        public void GetCustomer(string firstName,string lastName,string phoneNum,string address,string city,string state,string zipCode,string emailId)
+        public void GetCustomer(string firstName, string lastName, string phoneNum, string address, string city, string state, string zipCode, string emailId)
         {
-            
-            AddrBook person = new AddrBook(firstName,lastName,phoneNum,address,city,state,zipCode,emailId);
+
+            AddrBook person = new AddrBook(firstName, lastName, phoneNum, address, city, state, zipCode, emailId);
             if (people.Count == 0)
             {
                 people.Add(person);
@@ -57,9 +59,9 @@ namespace AddressBookSystem
             else
             {
                 AddrBook people = this.people.Find(a => a.firstName.Equals(firstName));
-                if(people==null)
+                if (people == null)
                 {
-                    AddrBook p = new AddrBook(firstName,lastName,address,city,state,phoneNum,zipCode,emailId);
+                    AddrBook p = new AddrBook(firstName, lastName, address, city, state, phoneNum, zipCode, emailId);
                     this.people.Add(p);
                 }
                 else
@@ -70,10 +72,8 @@ namespace AddressBookSystem
                 }
             }
         }
-
-
-        //Print the details
-        public void PrintCustomer(AddrBook person)
+            //Print the details
+            public void PrintCustomer(AddrBook person)
         {
             Console.WriteLine("First Name: " + person.firstName);
             Console.WriteLine("Last Name: " + person.lastName);
@@ -152,8 +152,6 @@ namespace AddressBookSystem
                     }
 
                 }
-
-
             }
         }
         //Listing the user entered details or modified details
@@ -171,9 +169,6 @@ namespace AddressBookSystem
                 PrintCustomer(person);
             }
             return;
-            //Console.WriteLine("\nPress any key to continue.");
-           
-            //Console.ReadKey();
             
         }
         //Removing the field using Lambda Function
@@ -189,8 +184,6 @@ namespace AddressBookSystem
                 return;
             }
             Console.WriteLine("Are you sure you want to remove this person from your address book? (Y/N)");
-          //  PrintCustomer(person);
-
             if (Console.ReadKey().Key == ConsoleKey.Y)
             {
                 people.Remove(person);
@@ -198,23 +191,23 @@ namespace AddressBookSystem
           
             }
         }
-        public void Search(List<AddrBook> people,string cityname,string statename)
+        public static void StoreCityList(string key, List<AddrBook> cityList, string city)
         {
-           
-            AddrBook addrBook = new AddrBook();
-            var result = people.FindAll(a =>a.city.Equals(cityname) || a.state.Equals(statename));
-            if (result.Count != 0)
+            List<AddrBook> CityList = cityList.FindAll(a => a.city.ToLower()==city);
+            foreach (var i in CityList)
             {
-               foreach(var m in result)
-                {
-                    PrintCustomer(m);
-                }
-            }
-            else
-            {
-                Console.WriteLine("No person details available");
+                Console.WriteLine("Found person \"{0}\" in Address Book \"{1}\" , residing in City {2}", i.firstName, key, i.city);
             }
         }
+        //Display Person names found in given State
+        public static void StoreStateList (string key, List<AddrBook> stateList, string state)
+        {
+            List<AddrBook> StateList = stateList.FindAll(x => x.state.ToLower()==state);
+            foreach (var i in StateList)
+            {
+                Console.WriteLine("Found person \"{0}\" in Address Book \"{1}\" , residing in State {2}", i.firstName, key, i.state);
+            }
+        }       
     }
 }
 
