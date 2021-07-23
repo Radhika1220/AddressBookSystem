@@ -275,7 +275,7 @@ namespace AddressBookSystem
                     {
                         Console.WriteLine("Found person \"{0} {1}\" , residing in City {2}", j.firstName, j.lastName, j.city);
                     }
-
+                    Console.WriteLine("Count of people in City: {0}", i.Value.Count);
 
                 }
             }
@@ -288,7 +288,7 @@ namespace AddressBookSystem
                     {
                         Console.WriteLine("Found person \"{0} {1}\" , residing in State {2}", b.firstName, b.lastName, b.state);
                     }
-
+                    Console.WriteLine("Count of people in State : {0}", a.Value.Count);
                 }
             }
 
