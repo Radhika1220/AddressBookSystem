@@ -291,8 +291,16 @@ namespace AddressBookSystem
                     {
                         Console.WriteLine("\nFound person \"{0} {1}\" , residing in City {2}", j.firstName, j.lastName, j.city);
                     }
+
                         //Get no of count persons based on city
                     Console.WriteLine("\nCount of people in City is: {0}", i.Value.Count);
+
+
+                    Console.WriteLine("Count of people in City is: {0}", i.Value.Count);
+
+                    Console.WriteLine("Count of people in City: {0}", i.Value.Count);
+
+
                 }
             }
             else
@@ -304,8 +312,10 @@ namespace AddressBookSystem
                     {
                         Console.WriteLine("\nFound person \"{0} {1}\" , residing in State {2}\n", b.firstName, b.lastName, b.state);
                     }
+
                     //Get no of count persons based on state
                     Console.WriteLine("\nCount of people in State is: {0}\n", a.Value.Count);
+
                 }
             }
 
@@ -325,7 +335,9 @@ namespace AddressBookSystem
                 sorted = new SortedList<string, AddrBook>();
                 foreach (var member in kvp.Value)
                 {
-                    sorted.Add(member.firstName, member);
+
+                    Console.WriteLine("Count of people in State : {0}", a.Value.Count);
+
                 }
                 foreach (var member in sorted)
                 {
