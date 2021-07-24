@@ -45,6 +45,11 @@ namespace AddressBookSystem
             this.emailId = email;
 
         }
+        //ToString Method -to print the details
+        public override string ToString()
+        {
+            return "Name: " + this.firstName + " " + this.lastName + " Address: " + this.address + "  City: " + this.city + " State: " + this.state + " Pincode: " + this.zipCode + " Phone Number: " + this.phoneNum + " Email Id: " + this.emailId;
+        }
         //Getting the user details
         public void GetCustomer(string firstName, string lastName, string phoneNum, string address, string city, string state, string zipCode, string emailId)
         {
@@ -262,6 +267,7 @@ namespace AddressBookSystem
                 Console.WriteLine("Found person \"{0}\" in Address Book \"{1}\" , residing in State {2}", i.firstName, key, i.state);
             }
         }
+        //Displaying city list or state list
         public static void DisplayCityorState()
         {
             Console.WriteLine("Enter 1-To view City list\n Enter 2-To view State list");
@@ -275,6 +281,10 @@ namespace AddressBookSystem
                     {
                         Console.WriteLine("Found person \"{0} {1}\" , residing in City {2}", j.firstName, j.lastName, j.city);
                     }
+
+
+                    Console.WriteLine("Count of people in City is: {0}", i.Value.Count);
+
                     Console.WriteLine("Count of people in City: {0}", i.Value.Count);
 
                 }
@@ -288,8 +298,37 @@ namespace AddressBookSystem
                     {
                         Console.WriteLine("Found person \"{0} {1}\" , residing in State {2}", b.firstName, b.lastName, b.state);
                     }
-                    Console.WriteLine("Count of people in State : {0}", a.Value.Count);
+
+                    Console.WriteLine("Count of people in State is: {0}", a.Value.Count);
                 }
+            }
+
+        }
+        /// <summary>
+        /// UC11-Sort Based on first name
+        /// </summary>
+        /// <param name="addressBook"></param>
+        //Sort the contact details in address book based on firstname
+        public static void SortContactPerson(Dictionary<string, List<AddrBook>> addressBook)
+        {
+
+            SortedList<string, AddrBook> sorted;
+            foreach (KeyValuePair<string, List<AddrBook>> kvp in addressBook)
+            {
+                Console.WriteLine("--------Displaying sorted Contact Person Details in address book: {0}-------", kvp.Key);
+                sorted = new SortedList<string, AddrBook>();
+                foreach (var member in kvp.Value)
+                {
+
+                    Console.WriteLine("Count of people in State : {0}", a.Value.Count);
+
+                }
+                foreach (var member in sorted)
+                {
+                    Console.WriteLine(member.Value.ToString());
+
+                }
+
             }
 
         }
