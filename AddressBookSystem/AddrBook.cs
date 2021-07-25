@@ -24,14 +24,14 @@ namespace AddressBookSystem
             people = new List<AddrBook>();
         }
         //Instance Varaibles
-        public string firstName;
-        public string lastName;
-        public string address;
-        public string city;
-        public string state;
-        public string zipCode;
-        public string phoneNum;
-        public string emailId;
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string address { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public string zipCode { get; set; }
+        public string phoneNum { get; set; }
+        public string emailId { get; set; }
         //Parameterized Constructor
         public AddrBook(string firstName, string lastName, string phoneNum, string address, string city, string state, string zipCode, string emailId)
         {

@@ -101,6 +101,7 @@ namespace AddressBookSystem
                 Console.WriteLine("Enter 7-Sort based on zipcode");
                 Console.WriteLine("Enter 8-To write a data in file");
                 Console.WriteLine("Enter 9-To read a data in file");
+                Console.WriteLine("Enter 10- To write data and read data in csv file");
                 int opt = Convert.ToInt32(Console.ReadLine());
                 switch (opt)
                 {
@@ -131,6 +132,9 @@ namespace AddressBookSystem
                         break;
                     case 9:
                         FileOperations.ReadAddressBook();
+                        break;
+                    case 10:
+                        CsvOperations.WriteInCSVFile(addressBook);
                         break;
                     default:
                         Console.WriteLine("Invalid Option!");

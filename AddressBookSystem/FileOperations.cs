@@ -12,7 +12,8 @@ namespace AddressBookSystem
         static string filePath = @"C:\Users\Radhika\source\repos\AddressBookSystem\AddressBookSystem\AddressText.txt";
         public static void WriteInFile(Dictionary<string, List<AddrBook>> addressBook)
         {
-            File.WriteAllText(filePath, string.Empty);
+            string nullValue = "";
+            File.WriteAllText(filePath,nullValue);
             foreach (KeyValuePair<string, List<AddrBook>> kvp in addressBook)
             {
                 //Append key in file
