@@ -1,5 +1,6 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -12,6 +13,7 @@ namespace AddressBookSystem
 {
     public class CsvOperations
     {
+        static string jsonfilePath = @"C:\Users\Radhika\source\repos\AddressBookSystem\AddressBookSystem\JsonData.Json";
         static string csvfilePath = @"C:\Users\Radhika\source\repos\AddressBookSystem\AddressBookSystem\csvData.csv";
         public static void WriteInCSVFile(Dictionary<string, List<AddrBook>> addressBook)
         {
@@ -73,6 +75,28 @@ namespace AddressBookSystem
                             //calling tostring method to print the data
                             Console.WriteLine(addr.ToString());
                         }
+                        //Reading from csv file and Writing into json file
+                        JsonSerializer jsonSerializer = new JsonSerializer();
+                        using (StreamWriter stream = new StreamWriter(jsonfilePath))
+                        using (JsonWriter jsonWriter = new JsonTextWriter(stream))
+                        {
+                           //Write the data in json file
+                            jsonSerializer.Serialize(jsonWriter, records);
+
+                        }
+
+                        //Reading from Json File
+                        List<AddrBook> jsonList = JsonConvert.DeserializeObject<List<AddrBook>>(File.ReadAllText(jsonfilePath));
+                        Console.WriteLine("\n * ****Read data successfully from JSON file********\n");
+                        foreach (var m in jsonList)
+                        {
+                            if (m.firstName == "firstName")
+                            {
+                                Console.WriteLine("\n");
+                                continue;
+                            }
+                            Console.WriteLine(m.ToString());
+                        }
                     }
                 }
             }
@@ -83,5 +107,6 @@ namespace AddressBookSystem
         }
     }
 }
+
 
   
