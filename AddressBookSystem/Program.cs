@@ -5,9 +5,7 @@ using System.Linq;
 namespace AddressBookSystem
 {
     class Program
-
     {
-
         public static Dictionary<string, List<AddrBook>> addressBook = new Dictionary<string, List<AddrBook>>();
         public static Dictionary<string, List<AddrBook>> City = new Dictionary<string, List<AddrBook>>();
         public static Dictionary<string, List<AddrBook>> State = new Dictionary<string, List<AddrBook>>();
@@ -102,6 +100,7 @@ namespace AddressBookSystem
                 Console.WriteLine("Enter 8-To write a data in file");
                 Console.WriteLine("Enter 9-To read a data in file");
                 Console.WriteLine("Enter 10- To write data and read data in csv file");
+                Console.WriteLine("Enter 11- Read and write operation in json");
                 int opt = Convert.ToInt32(Console.ReadLine());
                 switch (opt)
                 {
@@ -135,6 +134,9 @@ namespace AddressBookSystem
                         break;
                     case 10:
                         CsvOperations.WriteInCSVFile(addressBook);
+                        break;
+                    case 11:
+                        CsvOperations.ReadCSVFile();
                         break;
                     default:
                         Console.WriteLine("Invalid Option!");

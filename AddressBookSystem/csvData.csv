@@ -1,8 +1,4 @@
 firstName,lastName,address,city,state,zipCode,phoneNum,emailId
-Vishnu,M,54/122,Chennai,TamilNadu,60015,8956481236,vish@gmail.com
-Priya,V,84/78,Mysore,Karnataka,60014,845986235,priya@yahoo.com
-
-firstName,lastName,address,city,state,zipCode,phoneNum,emailId
-Subhiksha,R,57/63,Madurai,TamilNadu,6115,9654812365,subh@gamil.com
-Arun,R,54/87,Mumbai,Maharashtra,60018,9645812365,arunr@gmail.com
+Vishnu,M,54,Chennai,TN,60014,9685412365,vish@gmail.com
+Priya,V,89,Mysore,Karanataka,60047,984562145,priya@gmail.com
 
