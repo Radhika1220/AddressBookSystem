@@ -6,6 +6,8 @@ namespace AddressBookSystem
 {
     class Program
     {
+        //Creating a dictionary for city,state aand person details
+
         public static Dictionary<string, List<AddrBook>> addressBook = new Dictionary<string, List<AddrBook>>();
         public static Dictionary<string, List<AddrBook>> City = new Dictionary<string, List<AddrBook>>();
         public static Dictionary<string, List<AddrBook>> State = new Dictionary<string, List<AddrBook>>();
@@ -27,6 +29,7 @@ namespace AddressBookSystem
                 while (noOfContact > 0)
                 {
                     Console.WriteLine("Enter the details of contact to be added: ");
+                    //Getting the user details
 
                     Console.Write("Enter First Name: ");
                     string FirstName = Console.ReadLine();
@@ -51,9 +54,11 @@ namespace AddressBookSystem
 
                     Console.Write("Enter EmailId: ");
                     string EmailId = Console.ReadLine();
+                    //Calling the getcustomer method and store it dictionary
                     addrBook.GetCustomer(FirstName, LastName, PhoneNumber, Addresses, City, State, ZipCode, EmailId);
                     noOfContact--;
                     Console.WriteLine(" ");
+                    //Print the details
                     addrBook.ListingPeople();
                 }
                 Console.WriteLine("1.To modify the details");
@@ -73,22 +78,27 @@ namespace AddressBookSystem
                         addrBook.ListingPeople();
                         break;
                 }
+                //Checking the address book name is already exist or not
                 if (addressBook.ContainsKey(addressbookname))
                 {
                     Console.WriteLine("Existing address book name");
                     return;
                 }
+                //If not add it in dictionary
                 else
                 {
                     addressBook.Add(addressbookname, addrBook.people);
                 }
+
                 noOfBooks++;
 
+                //Displaying the address book names
                 foreach (KeyValuePair<string, List<AddrBook>> addr in addressBook)
                 {
                     Console.WriteLine("The address Books are:{0}", addr.Key);
 
                 }
+             //Searching and sorting operations based on city,state,name,zipcode
 
                 Console.WriteLine("Enter 1-To Search a person through a City");
                 Console.WriteLine("Enter 2-To Search a person through a State");
@@ -102,9 +112,9 @@ namespace AddressBookSystem
                 Console.WriteLine("Enter 10- To write data and read data in csv file");
                 Console.WriteLine("Enter 11- Read and write operation in json");
                 int opt = Convert.ToInt32(Console.ReadLine());
+
                 switch (opt)
                 {
-
                     case 1:
                         SearchAddress(opt);
                         break;
@@ -142,7 +152,7 @@ namespace AddressBookSystem
                         Console.WriteLine("Invalid Option!");
                         break;
                 }
-
+              //Search the person through city or state
                 static void SearchAddress(int option)
                 {
                     string city, state;
